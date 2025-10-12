@@ -2,7 +2,7 @@ import pymysql
 
 class Conexion:
     def __init__(self): 
-        """ Administra la conexion con la base de datos, sus atributos son los datos de la base de datos """
+        """ Administra la conexion con la base de datos, sus atributos son los datos de la base de datos .6."""
         self.host = "localhost"
         self.user = "mydb_user"
         self.password = "ChuW4nn1ng"
