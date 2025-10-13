@@ -1,1 +1,3 @@
-pymysql
+pymysql 
+datetime
+colorama

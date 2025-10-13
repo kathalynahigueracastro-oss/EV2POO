@@ -4,9 +4,9 @@ class Conexion:
     def __init__(self): 
         """ Administra la conexion con la base de datos, sus atributos son los datos de la base de datos .6."""
         self.host = "localhost"
-        self.user = "mydb_user"
-        self.password = "ChuW4nn1ng"
-        self.base_datos = "mydb"
+        self.user = "GE_EchoTech_user"
+        self.password = "Caiceo$_123"
+        self.base_datos = "gestion_empleados_echotech"
     
     def obtener_conexion(self):
         try:
