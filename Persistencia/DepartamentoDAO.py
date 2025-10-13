@@ -49,7 +49,8 @@ class DepartamentoDao:
        query = "DELETE * FROM departamento WHERE Id_departamento = %s"
        with conexion.cursor() as cursor: 
                cursor.execute(query, (id_departamento)) 
-               return cursor.fetchone() 
+               conexion.commit()
+               return "Departamento eliminado exitosamente"
        except Exception as e: 
            print(f"Ocurrio un error: {e}")
-       finally: 
+       

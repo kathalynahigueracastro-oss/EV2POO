@@ -7,7 +7,7 @@ cnx = Conexion()
 class EmpleadoDao:
 
     @staticmethod
-    def agregar_empleado(empleado:Empleado)
+    def agregar_empleado(empleado:Empleado):
     """ Guarda un empleado en la base de datos """
     query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol) VALUES (%s, %s, %s, %s, %s, %s)"
     valores = (
@@ -43,7 +43,7 @@ class EmpleadoDao:
             with conexion.cursor() as cursor:
                 cursor.execute(query, (id_empleado,))
                 return cursor.fetchone()
-        except Execption as e:
+        except Exception as e:
             print(f"Ocurrió un Error: {e}")
             return None
         finally:
@@ -62,10 +62,10 @@ class EmpleadoDao:
         query = "DELETE FROM empleado WHERE Id_empleado = %s"
         conexion = cnx.obtener_conexion()
         try:
-            with conexion.cursor() as cursos:
-                cursor.execute(query, (id_empleado))
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (id_empleado,))
             conexion.commit()
-            return 
+            return "Empleado Eliminado Correctamente"
         except Exception as e:
             print(f"Ocurrió un Error: {e}")
         
