@@ -4,7 +4,7 @@ def menu_principal():
 
 #--------Menú Empleados--------#
     if opcion == 1: 
-        print("\n === Menú Empleados === \n 1) Agregar Empleado \n 2) Eliminar Empleado \n 3) Actualizar Empleado \n 4) Consultar Empleado \n 0) Volver Atrás")
+        print("\n === Menú Empleados === \n 1) Agregar Empleado \n 2) Eliminar Empleado \n 3) Actualizar Empleado \n 4) Consultar Todos los Empleados \n 5) Buscar Empleado  \n 0) Volver Atrás")
         opcion2 = input("Seleccione una opción: ")
         if opcion2 == 1:
             pass
@@ -14,6 +14,8 @@ def menu_principal():
             pass
         elif opcion2 == 4: 
             pass
+        elif opcion2 == 5: 
+            pass
         elif opcion2 == 0:
             menu_principal()
         else: 
@@ -22,7 +24,7 @@ def menu_principal():
             
 #--------Menú Departamentos--------#
     elif opcion == 2: 
-        print("\n === Menú Departamentos === \n 1) Agregar Departamento \n 2) Eliminar Departamento \n 3) Actualizar Departamento \n 4) Consultar Departamento \n 0) Volver Atrás")
+        print("\n === Menú Departamentos === \n 1) Agregar Departamento \n 2) Eliminar Departamento \n 3) Actualizar Departamento \n 4) Consultar Todos Los Departamentos \n 5) Buscar deparamento \n 0) Volver Atrás")
         opcion2 = input("Seleccione una opción: ")
         if opcion2 == 1: 
             pass
@@ -31,6 +33,8 @@ def menu_principal():
         elif opcion2 == 3: 
             pass
         elif opcion2 == 4: 
+            pass
+        elif opcion2 == 5: 
             pass
         elif opcion2 == 0: 
             menu_principal()
@@ -40,7 +44,7 @@ def menu_principal():
 
 #--------Menú Proyectos--------#
     elif opcion == 3: 
-        print("\n === Menú Proyectos === \n 1) Agregar Proyecto \n 2) Eliminar Proyecto \n 3) Actualizar Proyecto \n 4) Consultar Proyecto \n 0) Volver Atrás")
+        print("\n === Menú Proyectos === \n 1) Agregar Proyecto \n 2) Eliminar Proyecto \n 3) Actualizar Proyecto \n 4) Consultar todos los Proyectos \n 5) Buscar proyecto \n 0) Volver Atrás")
         opcion2 = input("Seleccione una opción: ")
         if opcion2 == 1: 
             pass
@@ -49,6 +53,8 @@ def menu_principal():
         elif opcion2 == 3: 
             pass
         elif opcion2 == 4: 
+            pass
+        elif opcion2 == 5: 
             pass
         elif opcion2 == 0: 
             menu_principal()
