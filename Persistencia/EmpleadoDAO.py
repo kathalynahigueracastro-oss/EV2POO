@@ -7,4 +7,4 @@ cnx = Conexion()
 class EmpleadoDao:
     def agregar_empleado(empleado:Empleado)
     """ Guarda un empleado en la base de datos """
-    query = ""
+    query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol) VALUES (%s, %s, %s, %s, %s, %s)"
