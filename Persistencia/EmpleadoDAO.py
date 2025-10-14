@@ -86,8 +86,9 @@ class EmpleadoDao:
             cnx.cerrar_conexion()
     
     @staticmethod
-    def actualizar_empleado(indice):
+    def actualizar_empleado(indice, id_empleado):
         
+
 
 
 
