@@ -1,0 +1,123 @@
+from Dominio.Proyecto import Proyecto
+from Persistencia.Conexion import Conexion
+
+#Crear instancia clase conexion
+cnx = Conexion()
+
+class ProyectoDao:
+
+    @staticmethod
+    def agregar_proyecto(proyecto: Proyecto):
+        """ Guarda un proyecto en la base de datos """
+        query = "INSERT INTO proyecto (Id_Proyecto, Nombre, Descripcion, Fecha_Inicio, Fecha_Fin, Presupuesto) VALUES (%s, %s, %s, %s, %s, %s)"
+        valores = (
+            proyecto.obtener_id_proyecto(),
+            proyecto.obtener_nombre(),
+            proyecto.obtener_descripcion(),
+            proyecto.obtener_fecha_inicio(),
+            proyecto.obtener_fecha_fin(),
+            proyecto.obtener_presupuesto()
+        )
+
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, valores)
+            conexion.commit()
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+        finally:
+            cnx.cerrar_conexion(conexion)
+
+    @staticmethod
+    def obtener_proyecto_por_id(id_proyecto):
+        """ Obtiene a un proyecto por su id 
+        Parámetros:
+        id_proyecto: ID del proyecto en la base de datos
+        Return:
+        Diccionario con los datos del personaje """
+
+        query = "SELECT * FROM proyecto WHERE Id_Proyecto = %s"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (id_proyecto,))
+                return cursor.fetchone()
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return None
+        finally:
+            cnx.cerrar_conexion(conexion)
+    
+    def eliminar_proyecto(id_proyecto):
+        """
+        Eliminar proyecto de la base de datos basado en su ID
+
+        Parámetros:
+        id_proyecto: ID del proyecto en la base de datos
+        Return:
+        Mensaje de exito.
+        """
+        query = "DELETE FROM proyecto WHERE Id_Proyecto = %s"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (id_proyecto,))
+                conexion.commit()
+                return "Proyecto eliminado exitosamente"
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+        finally:
+            cnx.cerrar_conexion(conexion)
+    @staticmethod
+    def actualizar_proyecto(proyecto: Proyecto):
+          """
+          Actualiza los datos de un proyecto en la base de datos
+
+          Parámetros:
+          proyecto: Instancia de la clase Proyecto con los datos actualizados
+          Return:
+          Mensaje de exito.
+          """
+          query = """
+          UPDATE proyecto 
+          SET Nombre = %s, Descripcion = %s, Fecha_Inicio = %s, Fecha_Fin = %s, Presupuesto = %s
+          WHERE Id_Proyecto = %s
+          """
+          valores = (
+              proyecto.obtener_nombre(),
+              proyecto.obtener_descripcion(),
+              proyecto.obtener_fecha_inicio(),
+              proyecto.obtener_fecha_fin(),
+              proyecto.obtener_presupuesto(),
+              proyecto.obtener_id_proyecto()
+          )
+
+          conexion = cnx.obtener_conexion()
+          try:
+              with conexion.cursor() as cursor:
+                  cursor.execute(query, valores)
+              conexion.commit()
+              return "Proyecto actualizado exitosamente"
+          except Exception as e:
+              print(f"Ocurrió un Error: {e}")
+              return "Error al actualizar el proyecto."
+          finally:
+              cnx.cerrar_conexion(conexion)
+
+    @staticmethod
+    def mostrar_todos_los_proyectos():
+        """Obtiene diccionario con los proyectos
+        Parametros: None
+        Return: Diccionario con toda la informacion de proyectos"""
+        query = "SELECT * FROM proyecto"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query)
+                return cursor.fetchall()
+        except Exception as e:
+            print(f"Ocurrió un error: {e}")
+        finally:
+            cnx.cerrar_conexion(conexion)
+        
