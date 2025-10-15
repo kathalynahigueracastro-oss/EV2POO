@@ -7,7 +7,7 @@ cnx = Conexion()
 class EmpleadoDao:
 
     @staticmethod
-    def agregar_empleado(empleado:Empleado):
+    def agregar_empleado (empleado:Empleado):
         """ Guarda un empleado en la base de datos """
         query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol) VALUES (%s, %s, %s, %s, %s, %s)"
         valores = (
@@ -55,8 +55,7 @@ class EmpleadoDao:
 
         Parámetros:
         id_empleado: ID del empleado en la base de datos
-        Return:
-        Mensaje de exito.
+        Return: Mensaje de exito.
         """
 
         query = "DELETE FROM empleado WHERE Id_empleado = %s"
@@ -70,7 +69,7 @@ class EmpleadoDao:
             print(f"Ocurrió un Error: {e}")
         
     @staticmethod
-    def mostrar_todo_empleados():
+    def mostrar_todo_empleados(self):
         """Obtiene diccionario con los empleados
     Parametros: None
     Return: Diccionario con toda la informacion de empleados"""
@@ -86,9 +85,37 @@ class EmpleadoDao:
             cnx.cerrar_conexion()
     
     @staticmethod
-    def actualizar_empleado(indice, id_empleado):
+    def actualizar_empleado(indice, nuevo_valor, id_empleado):
+        """Permite al usuario indicar que atributo desea actualizar y actualizarlo en la base de datos.
+        Parametros: 
+        Indice: Indica el numero que corresponde a un atributo
+        Id_empleado: indica que empleado desea actualizar.
+        Return: Mensaje de exito """
         
-
+        if indice == 1:
+            query = "UPDATE empleado SET Nombre = %s WHERE Id_empleado= %s"
+        elif indice == 2:
+            query = "UPDATE empleado SET Correo = %s WHERE Id_empleado = %s"
+        elif indice == 3:
+            query = "UPDATE proyecto SET Direccion = %s WHERE Id_empleado = %s"
+        elif indice == 4:
+            query = "UPDATE proyecto SET Contrasena = %s WHERE Id_empleado = %s"
+        elif indice == 5:
+            query = "UPDATE proyecto SET Rol = %s WHERE Id_empleado = %s"
+        else:
+            return "Indice Invalido"
+        
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nuevo_valor, id_empleado))
+            conexion.commit()
+            return "Empleado actualizado exitosamente."
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return "Error al actualizar el proyecto."
+        finally:
+            cnx.cerrar_conexion(conexion) 
 
 
 

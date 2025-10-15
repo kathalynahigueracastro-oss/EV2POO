@@ -49,14 +49,15 @@ class ProyectoDao:
         finally:
             cnx.cerrar_conexion(conexion)
     
+    @staticmethod
     def eliminar_proyecto(id_proyecto):
         """
-        Eliminar proyecto de la base de datos basado en su ID
-
+        Elimina un proyecto de la base de datos basado en su ID.
+    
         Parámetros:
-        id_proyecto: ID del proyecto en la base de datos
+        id_proyecto: ID del proyecto en la base de datos.
         Return:
-        Mensaje de exito.
+        Mensaje de éxito o error.
         """
         query = "DELETE FROM proyecto WHERE Id_Proyecto = %s"
         conexion = cnx.obtener_conexion()
@@ -64,11 +65,14 @@ class ProyectoDao:
             with conexion.cursor() as cursor:
                 cursor.execute(query, (id_proyecto,))
                 conexion.commit()
-                return "Proyecto eliminado exitosamente"
+                return "Proyecto eliminado exitosamente."
         except Exception as e:
-            print(f"Ocurrió un Error: {e}")
+            print(f"Ocurrió un error: {e}")
+            return "Error al eliminar el proyecto."
         finally:
             cnx.cerrar_conexion(conexion)
+
+
     @staticmethod
     def actualizar_proyecto(proyecto: Proyecto):
           """
@@ -121,3 +125,48 @@ class ProyectoDao:
         finally:
             cnx.cerrar_conexion(conexion)
         
+    @staticmethod
+    def actualizar_proyecto(indice, id_proyecto, nuevo_valor):
+        """Actualiza un atributo específico de un proyecto en la base de datos.
+        Parámetros:
+        indice: Indica el número que corresponde a un atributo.
+        id_proyecto: ID del proyecto a actualizar.
+        nuevo_valor: Nuevo valor para el atributo seleccionado.
+        Return:
+        Mensaje de éxito o error.
+        """
+        # Asegurar que indice sea entero
+        try:
+            indice = int(indice)
+        except ValueError:
+            return "El índice debe ser un número."
+
+        # Determinar qué columna actualizar
+        if indice == 1:
+            query = "UPDATE proyecto SET Nombre = %s WHERE Id_Proyecto = %s"
+        elif indice == 2:
+            query = "UPDATE proyecto SET Descripcion = %s WHERE Id_Proyecto = %s"
+        elif indice == 3:
+            query = "UPDATE proyecto SET Fecha_Inicio = %s WHERE Id_Proyecto = %s"
+        elif indice == 4:
+            query = "UPDATE proyecto SET Fecha_Fin = %s WHERE Id_Proyecto = %s"
+        elif indice == 5:
+            query = "UPDATE proyecto SET Presupuesto = %s WHERE Id_Proyecto = %s"
+        else:
+            return "Índice inválido."
+
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nuevo_valor, id_proyecto))
+            conexion.commit()
+            return f"Proyecto {id_proyecto} actualizado exitosamente."
+        except Exception as e:
+            print(f"Ocurrió un error: {e}")
+            return "Error al actualizar el proyecto."
+        finally:
+            cnx.cerrar_conexion(conexion)
+
+
+
+    

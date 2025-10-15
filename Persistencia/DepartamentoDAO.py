@@ -43,7 +43,8 @@ class DepartamentoDao:
             return None
         finally:
             cnx.cerrar_conexion(conexion)
-    
+
+    @staticmethod
     def eliminar_departamento(id_departamento):
         """
         Eliminar departamento de la base de datos basado en su ID
@@ -67,34 +68,6 @@ class DepartamentoDao:
             cnx.cerrar_conexion(conexion)
 
     @staticmethod
-    def actualizar_departamento(departamento: Departamento):
-          """
-          Actualiza la información de un departamento en la base de datos.
-
-          Parámetros:
-          departamento: Instancia de la clase Departamento con los datos actualizados.
-          Return:
-          Mensaje de éxito o error.
-          """
-          query = "UPDATE departamento SET Nombre = %s WHERE Id_Departamento = %s"
-          valores = (
-              departamento.obtener_nombre(),
-              departamento.obtener_id_departamento()
-          )
-
-          conexion = cnx.obtener_conexion()
-          try:
-              with conexion.cursor() as cursor:
-                  cursor.execute(query, valores)
-              conexion.commit()
-              return "Departamento actualizado exitosamente."
-          except Exception as e:
-              print(f"Ocurrió un Error: {e}")
-              return "Error al actualizar el departamento."
-          finally:
-              cnx.cerrar_conexion(conexion)
-
-    @staticmethod
     def mostrar_todos_los_departamentos():
          """Obtiene diccionario con los departamentos"""
          query = "SELECT * FROM departamento"
@@ -107,4 +80,28 @@ class DepartamentoDao:
              print(f"Ocurrió un error: {e}")
          finally:
              cnx.cerrar_conexion(conexion)
-             
+
+    @staticmethod
+    def actualizar_departamento(indice, id_departamento, nuevo_valor):  
+        """Permite al usuario indicar que atributo desea actualizar y actualizarlo en la base de datos
+        Parametros: Indica el numero que corresponde a un atributo
+        Id_departamento: indica el departamento que desea actualizar
+        Return: None
+        """
+    
+        if indice == 1:
+            query = "UPDATE departamento SET Nombre = %s WHERE Id_departamento = %s"
+        else: 
+            return "Indice invalido" 
+
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nuevo_valor, id_departamento))
+            conexion.commit()
+            return "Departamento actualizado exitosamente."
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return "Error al actualizar el departamento."
+        finally:
+            cnx.cerrar_conexion(conexion)
