@@ -19,7 +19,7 @@ class Conexion:
             )
             return conexion
         except pymysql.MySQLError as e:
-            print(f"Error: {e}")
+            print(f"Error (Holy): {e}")
             raise
 
     def cerrar_conexion(self, conexion):
