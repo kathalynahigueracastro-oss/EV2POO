@@ -132,13 +132,3 @@ def validar_registro_tiempo(horas: float) -> float:
     if not isinstance(horas, (int, float)) or horas <= 0:
         raise ValueError("Las horas registradas deben ser un número positivo.")
     return horas
-
-
-
-
-
-
-
-
-
-

@@ -89,7 +89,7 @@ class EmpleadoDao:
             print(f"Ocurrió un Error: {e}")
         
     @staticmethod
-    def mostrar_todo_empleados(self):
+    def mostrar_todo_empleados():
         """Obtiene diccionario con los empleados
     Parametros: None
     Return: Diccionario con toda la informacion de empleados"""
