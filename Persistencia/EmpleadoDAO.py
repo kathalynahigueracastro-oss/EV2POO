@@ -11,12 +11,12 @@ class EmpleadoDao:
         """ Guarda un empleado en la base de datos """
         query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol) VALUES (%s, %s, %s, %s, %s, %s)"
         valores = (
-            Empleado.obtener_id_empleado(),
-            Empleado.obtener_nombre(),
-            Empleado.obtener_correo(),
-            Empleado.obtener_direccion(),
-            Empleado.obtener_contrasena(),
-            Empleado.obtener_rol()
+            empleado.obtener_id_empleado(),
+            empleado.obtener_nombre(),
+            empleado.obtener_correo(),
+            empleado.obtener_direccion(),
+            empleado.obtener_contrasena(),
+            empleado.obtener_rol()
         )
 
         conexion = cnx.obtener_conexion()
@@ -42,6 +42,26 @@ class EmpleadoDao:
         try:
             with conexion.cursor() as cursor:
                 cursor.execute(query, (id_empleado,))
+                return cursor.fetchone()
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return None
+        finally:
+            cnx.cerrar_conexion(conexion)
+        
+    @staticmethod
+    def obtener_empleado_por_nombre(nombre):
+        """ Obtiene a un empleado por su nombre 
+        Parámetros:
+        nombre: Nombre del empleado en la base de datos
+        Return:
+        Diccionario con los datos del personaje """
+
+        query = "SELECT * FROM empleado WHERE Nombre = %s"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nombre,))
                 return cursor.fetchone()
         except Exception as e:
             print(f"Ocurrió un Error: {e}")

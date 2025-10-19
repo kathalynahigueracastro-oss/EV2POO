@@ -43,6 +43,26 @@ class DepartamentoDao:
             return None
         finally:
             cnx.cerrar_conexion(conexion)
+            
+    @staticmethod
+    def obtener_departamento_por_nombre(nombre):
+        """ Obtiene a un departamento por su nombre 
+        Parámetros:
+        nombre: Nombre del departamento en la base de datos
+        Return:
+        Diccionario con los datos del personaje """
+
+        query = "SELECT * FROM departamento WHERE Nombre = %s"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nombre,))
+                return cursor.fetchone()
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return None
+        finally:
+            cnx.cerrar_conexion(conexion)
 
     @staticmethod
     def eliminar_departamento(id_departamento):

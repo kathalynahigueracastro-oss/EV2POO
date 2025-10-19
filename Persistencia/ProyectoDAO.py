@@ -50,6 +50,27 @@ class ProyectoDao:
             cnx.cerrar_conexion(conexion)
     
     @staticmethod
+    def obtener_proyecto_por_nombre(nombre):
+        """ Obtiene a un proyecto por su nombre 
+        Parámetros:
+        nombre: Nombre del proyecto en la base de datos
+        Return:
+        Diccionario con los datos del personaje """
+
+        query = "SELECT * FROM proyecto WHERE Nombre = %s"
+        conexion = cnx.obtener_conexion()
+        try:
+            with conexion.cursor() as cursor:
+                cursor.execute(query, (nombre,))
+                return cursor.fetchone()
+        except Exception as e:
+            print(f"Ocurrió un Error: {e}")
+            return None
+        finally:
+            cnx.cerrar_conexion(conexion)
+    
+    
+    @staticmethod
     def eliminar_proyecto(id_proyecto):
         """
         Elimina un proyecto de la base de datos basado en su ID.
