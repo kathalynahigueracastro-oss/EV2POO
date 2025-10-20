@@ -1,7 +1,6 @@
 from Dominio.Empleado import Empleado
 from Persistencia.EmpleadoDAO import EmpleadoDao
 from Reglas import validar_empleado, validar_id, validar_nombre, validar_correo, validar_direccion, validar_contrasena, validar_rol
-from 
 
 class ReglasEmpleado:
     def __init__(self):

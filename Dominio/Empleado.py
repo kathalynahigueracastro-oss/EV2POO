@@ -67,7 +67,7 @@ class Empleado:
         self._rol = rol
     
     def colocar_fecha_contrato(self, fecha_contrato: date) -> None:
-        self._fecha_contrato = fecha_contraro 
+        self._fecha_contrato = fecha_contrato 
 
     def colocar_telefono(self, telefono: str) -> None:
         self._telefono = telefono 
