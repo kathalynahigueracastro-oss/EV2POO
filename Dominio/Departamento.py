@@ -1,7 +1,8 @@
 class Departamento:
-    def __init__(self, id_departamento: int, nombre: str):
+    def __init__(self, id_departamento: int, nombre: str, gerente: str) -> None:
         self._id_departamento = id_departamento
         self._nombre = nombre
+        self._gerente = gerente 
 
     #Getters
 
@@ -11,6 +12,9 @@ class Departamento:
     def obtener_nombre(self) -> str:
         return self._nombre
     
+    def obtener_gerente(self) -> str:
+        return self._gerente
+    
     
     #Setters
       
@@ -19,4 +23,7 @@ class Departamento:
     
     def colocar_nombre(self, nombre: str) -> None:
         self._nombre = nombre
+    
+    def colocar_gerente(self, gerente:str) -> None:
+        self._gerente = gerente
     

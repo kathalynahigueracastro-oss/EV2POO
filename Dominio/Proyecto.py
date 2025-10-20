@@ -1,37 +1,51 @@
 from datetime import date
 
 class Proyecto:
-    def __init__(self, id_proyecto: int, nombre: str, descripcion: str, 
-                 fecha_inicio: date, fecha_fin: date, presupuesto: float) -> None:
-        self.id_proyecto = id_proyecto
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.fecha_inicio = fecha_inicio
-        self.fecha_fin = fecha_fin
-        self.presupuesto = presupuesto
+    def __init__(self, id_proyecto: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_fin: date, presupuesto: float) -> None:
+        self._id_proyecto = id_proyecto
+        self._nombre = nombre
+        self._descripcion = descripcion
+        self._fecha_inicio = fecha_inicio
+        self._fecha_fin = fecha_fin
+        self._presupuesto = presupuesto
 
     # === Métodos getter ===
     def obtener_id_proyecto(self):
-        return self.id_proyecto
+        return self._id_proyecto
 
     def obtener_nombre(self):
-        return self.nombre
+        return self._nombre
 
     def obtener_descripcion(self):
-        return self.descripcion
+        return self._descripcion
 
     def obtener_fecha_inicio(self):
-        return self.fecha_inicio
+        return self._fecha_inicio
 
     def obtener_fecha_fin(self):
-        return self.fecha_fin
+        return self._fecha_fin
 
     def obtener_presupuesto(self):
-        return self.presupuesto
+        return self._presupuesto 
 
-    # (opcional) método para mostrar datos formateados
-    def __str__(self):
-        return (f"Proyecto {self.id_proyecto}: {self.nombre}\n"
-                f"Descripción: {self.descripcion}\n"
-                f"Inicio: {self.fecha_inicio} | Fin: {self.fecha_fin}\n"
-                f"Presupuesto: ${self.presupuesto:,.2f}")
+
+    # === Métodos setter ===
+    
+    def colocar_id_proyecto(self, id_proyecto: int) -> None:
+        self._id_proyecto = id_proyecto
+        
+    def colocar_nombre(self, nombre: str) -> None:
+        self._nombre = nombre
+        
+    def colocar_descripcion(self, descripcion: str) -> None:
+        self._descripcion = descripcion
+        
+    def colocar_fecha_inicio(self, fecha_inicio: date) -> None:
+        self._fecha_inicio = fecha_inicio
+        
+    def colocar_fecha_fin(self, fecha_fin: date) -> None:
+        self._fecha_fin = fecha_fin
+        
+    def colocar_presupuesto(self, presupuesto: float) -> None:
+        self._presupuesto = presupuesto
+        

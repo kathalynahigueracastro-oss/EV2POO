@@ -52,32 +52,6 @@ def _fecha_inicio_menor_termino(fecha_inicio, fecha_termino):
    
 #Validaciones por entidad  
 
-def validar_empleado(empleado: Empleado) -> Empleado: 
-    """Valida los datos de un empleado."""
-    empleado.id_empleado = _no_vacio(str(empleado.id_empleado), "ID Empleado")
-    empleado.nombre = _no_vacio(empleado.nombre, "Nombre")
-    empleado.correo = _no_vacio(empleado.correo, "Correo")
-    empleado.direccion = _no_vacio(empleado.direccion, "Dirección")
-    empleado.contrasena = _no_vacio(empleado.contrasena, "Contraseña")
-    empleado.rol = _rol_valido(empleado.rol)
-    return empleado   
-
-def validar_departamento(departamento: Departamento) -> Departamento:
-    """Valida los datos de un departamento."""
-    departamento.id_departamento = id_valido(departamento.id_departamento)
-    departamento.nombre = _no_vacio(departamento.nombre, "Nombre")
-    return departamento
-
-def validar_proyecto(proyecto: Proyecto) -> Proyecto:
-    """Valida los datos de un proyecto."""
-    proyecto.id_proyecto = id_valido(proyecto.id_proyecto)
-    proyecto.nombre = _no_vacio(proyecto.nombre, "Nombre")
-    proyecto.descripcion = _no_vacio(proyecto.descripcion, "Descripción")
-    proyecto.fecha_inicio = _fecha_valida(proyecto.fecha_inicio)
-    proyecto.fecha_termino = _fecha_valida(proyecto.fecha_termino)
-    _fecha_inicio_menor_termino(proyecto.fecha_inicio, proyecto.fecha_termino)
-    return proyecto
-
 def validar_descripcion(descripcion: str) -> str:
     """Valida que una descripción no esté vacía."""
     descripcion = _no_vacio(descripcion, "Descripción")

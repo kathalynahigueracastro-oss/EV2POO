@@ -93,43 +93,6 @@ class ProyectoDao:
         finally:
             cnx.cerrar_conexion(conexion)
 
-
-    @staticmethod
-    def actualizar_proyecto(proyecto: Proyecto):
-          """
-          Actualiza los datos de un proyecto en la base de datos
-
-          Parámetros:
-          proyecto: Instancia de la clase Proyecto con los datos actualizados
-          Return:
-          Mensaje de exito.
-          """
-          query = """
-          UPDATE proyecto 
-          SET Nombre = %s, Descripcion = %s, Fecha_Inicio = %s, Fecha_Fin = %s, Presupuesto = %s
-          WHERE Id_Proyecto = %s
-          """
-          valores = (
-              proyecto.obtener_nombre(),
-              proyecto.obtener_descripcion(),
-              proyecto.obtener_fecha_inicio(),
-              proyecto.obtener_fecha_fin(),
-              proyecto.obtener_presupuesto(),
-              proyecto.obtener_id_proyecto()
-          )
-
-          conexion = cnx.obtener_conexion()
-          try:
-              with conexion.cursor() as cursor:
-                  cursor.execute(query, valores)
-              conexion.commit()
-              return "Proyecto actualizado exitosamente"
-          except Exception as e:
-              print(f"Ocurrió un Error: {e}")
-              return "Error al actualizar el proyecto."
-          finally:
-              cnx.cerrar_conexion(conexion)
-
     @staticmethod
     def mostrar_todos_los_proyectos():
         """Obtiene diccionario con los proyectos

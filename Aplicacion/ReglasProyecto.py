@@ -1,12 +1,13 @@
 from Dominio.Proyecto import Proyecto
 from Persistencia.ProyectoDAO import ProyectoDao
 from Reglas import validar_proyecto, validar_id, validar_nombre, validar_descripcion, validar_fecha
+from datetime import date
 
 class ReglasProyecto:
     def __init__(self):
         self.dao = ProyectoDao()
 
-    def crear_proyecto(self, id_proy: int, nombre: str, descripcion: str, fecha_inicio: str, fecha_termino: str, presupuesto: float):
+    def crear_proyecto(self, id_proy: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_termino: date, presupuesto: float):
         try:
             # Creamos el objeto primero
             proy = Proyecto(id_proyecto=id_proy, nombre=nombre, descripcion=descripcion, fecha_inicio=fecha_inicio, fecha_termino=fecha_termino, presupuesto=presupuesto)
@@ -36,3 +37,15 @@ class ReglasProyecto:
             return self.dao.obtener_proyecto_por_nombre(nombre)
         except ValueError as e:
             return f"Error de validación: {e}"
+    
+    def eliminar_proyecto(self, id_proyecto: int):
+        try:
+            validar_id(id_proyecto)
+            self.dao.eliminar_proyecto(id_proyecto)
+            return f"Proyecto con ID {id_proyecto}"
+        except ValueError as e:
+            return f"Error de validación: {e}"
+        except Exception as e:
+            return f"Error al eliminar proyecto: {e}"
+    
+    

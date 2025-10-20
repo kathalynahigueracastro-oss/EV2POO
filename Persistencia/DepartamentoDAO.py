@@ -103,16 +103,20 @@ class DepartamentoDao:
 
     @staticmethod
     def actualizar_departamento(indice, id_departamento, nuevo_valor):  
-        """Permite al usuario indicar que atributo desea actualizar y actualizarlo en la base de datos
-        Parametros: Indica el numero que corresponde a un atributo
-        Id_departamento: indica el departamento que desea actualizar
-        Return: None
         """
-    
+        Actualiza un departamento en la base de datos basado en su ID.
+
+        Parámetros:
+        indice: Índice del campo a actualizar (1 para nombre).
+        id_departamento: ID del departamento en la base de datos.
+        nuevo_valor: Nuevo valor para el campo especificado.
+        Return:
+        Mensaje de éxito o error.
+        """
         if indice == 1:
-            query = "UPDATE departamento SET Nombre = %s WHERE Id_departamento = %s"
-        else: 
-            return "Indice invalido" 
+            query = "UPDATE departamento SET Nombre = %s WHERE Id_Departamento = %s"
+        else:
+            return "Índice inválido."
 
         conexion = cnx.obtener_conexion()
         try:
@@ -121,7 +125,8 @@ class DepartamentoDao:
             conexion.commit()
             return "Departamento actualizado exitosamente."
         except Exception as e:
-            print(f"Ocurrió un Error: {e}")
+            print(f"Ocurrió un error: {e}")
             return "Error al actualizar el departamento."
         finally:
             cnx.cerrar_conexion(conexion)
+            

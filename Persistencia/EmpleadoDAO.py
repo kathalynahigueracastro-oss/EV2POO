@@ -9,15 +9,20 @@ class EmpleadoDao:
     @staticmethod
     def agregar_empleado (empleado:Empleado):
         """ Guarda un empleado en la base de datos """
-        query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO empleado (Id_Empleado, Nombre, Correo, Direccion, Contraseña, Rol, Fecha_contrato, Telefono, Salario, Departamento) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         valores = (
             empleado.obtener_id_empleado(),
             empleado.obtener_nombre(),
             empleado.obtener_correo(),
             empleado.obtener_direccion(),
             empleado.obtener_contrasena(),
-            empleado.obtener_rol()
+            empleado.obtener_rol(),
+            empleado.obtener_fecha_contrato(),
+            empleado.obtener_telefono(),
+            empleado.obtener_salario(),
+            empleado.obtener_departamento().obtener_id_departamento()
         )
+           
 
         conexion = cnx.obtener_conexion()
         try:
@@ -122,6 +127,14 @@ class EmpleadoDao:
             query = "UPDATE proyecto SET Contrasena = %s WHERE Id_empleado = %s"
         elif indice == 5:
             query = "UPDATE proyecto SET Rol = %s WHERE Id_empleado = %s"
+        elif indice == 6:
+            query = "UPDATE proyecto SET Fecha_contrato = %s WHERE Id_empleado = %s"
+        elif indice == 7:
+            query = "UPDATE proyecto SET Telefono = %s WHERE Id_empleado = %s"
+        elif indice == 8:
+            query = "UPDATE proyecto SET Salario = %s WHERE Id_empleado = %s"
+        elif indice == 9:
+            query = "UPDATE proyecto SET Departamento = %s WHERE Id_empleado = %s"
         else:
             return "Indice Invalido"
         
