@@ -6,7 +6,7 @@ class ReglasDepartamento:
     def __init__(self):
         self.dao = DepartamentoDao()
 
-    def crear_departamento(self, id_depto: int, nombre: str):
+    def crear_departamento(self, id_departamento: int, nombre: str):
         """ Lo que hace: Crea un nuevo departamento después de validar los datos.
             Parámetros:
             - id_depto: ID del departamento.
@@ -14,9 +14,9 @@ class ReglasDepartamento:
             Retorna: Mensaje de éxito o error.
             """
         try:
-            depto = Departamento(id_departamento=id_depto, nombre=nombre)
-            validar_departamento(depto) 
-            self.dao.agregar_departamento(depto)
+            departamento = Departamento(id_departamento=id_departamento, nombre=nombre)
+            validar_departamento(departamento) 
+            self.dao.agregar_departamento(departamento)
             return f"Departamento '{nombre}' agregado exitosamente."
         
         except ValueError as e:
@@ -24,7 +24,7 @@ class ReglasDepartamento:
         except Exception as e:
             return f"Error al crear departamento: {e}"
 
-    def modificar_departamento(self, indice: int, id_depto: int, nuevo_valor: str):
+    def modificar_departamento(self, indice: int, id_departamento: int, nuevo_valor: str):
         """ Lo que hace: Modifica un departamento existente después de validar los datos.
             Parámetros:
             - indice: Índice del campo a modificar (1 para nombre).
@@ -33,41 +33,41 @@ class ReglasDepartamento:
             Retorna: Mensaje de éxito o error.
             """
         try:
-            validar_id(id_depto)
+            validar_id(id_departamento)
             if indice == 1:
                 validar_nombre(nuevo_valor)
             else:
                 return "Índice inválido."
                 
-            return self.dao.actualizar_departamento(indice, id_depto, nuevo_valor)
+            return self.dao.actualizar_departamento(indice, id_departamento, nuevo_valor)
         except ValueError as e:
             return f"Error de validación: {e}"
         except Exception as e:
             return f"Error al modificar: {e}"
 
-    def eliminar_departamento(self, id_depto: int):
+    def eliminar_departamento(self, id_departamento: int):
         """ Lo que hace: Elimina un departamento por su ID después de validar el ID.
             Parámetros:
             - id_depto: ID del departamento a eliminar.
             Retorna: Mensaje de éxito o error.
             """
         try:
-            validar_id(id_depto)
-            return self.dao.eliminar_departamento(id_depto)
+            validar_id(id_departamento)
+            return self.dao.eliminar_departamento(id_departamento)
         except ValueError as e:
             return f"Error de validación: {e}"
         except Exception as e:
             return f"Error al eliminar: {e}"
 
-    def buscar_por_codigo(self, id_depto: int):
+    def buscar_por_codigo(self, id_departamento: int):
         """ Lo que hace: Busca un departamento por su ID después de validar el ID.
             Parámetros:
             - id_depto: ID del departamento a buscar.
             Retorna: El departamento encontrado o un mensaje de error.
             """
         try:
-            validar_id(id_depto)
-            return self.dao.obtener_departamento_por_id(id_depto)
+            validar_id(id_departamento)
+            return self.dao.obtener_departamento_por_id(id_departamento)
         except ValueError as e:
             return f"Error de validación: {e}"
 

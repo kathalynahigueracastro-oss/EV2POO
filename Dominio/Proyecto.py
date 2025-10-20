@@ -1,7 +1,17 @@
 from datetime import date
 
 class Proyecto:
-    def __init__(self, id_proyecto: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_fin: date, presupuesto: float) -> None:
+    """ Lo que hace: Representa un proyecto con sus atributos y métodos.
+    Parámetros:
+    - id_proyecto: ID del proyecto.
+    - nombre: Nombre del proyecto.
+    - descripcion: Descripción del proyecto.
+    - fecha_inicio: Fecha de inicio del proyecto.
+    - fecha_fin: Fecha de fin del proyecto.
+    - presupuesto: Presupuesto del proyecto.
+    Retorna: Una instancia de la clase Proyecto.
+    """
+    def __init__(self, id_proyecto: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_fin: date, presupuesto: int) -> None:
         self._id_proyecto = id_proyecto
         self._nombre = nombre
         self._descripcion = descripcion
@@ -9,7 +19,11 @@ class Proyecto:
         self._fecha_fin = fecha_fin
         self._presupuesto = presupuesto
 
-    # === Métodos getter ===
+    # === Métodos getter ===#
+    """ Lo que hace: Obtiene los atributos de las clases. 
+        Retorna: Los atributos de la clase.
+    """
+    
     def obtener_id_proyecto(self):
         return self._id_proyecto
 
@@ -29,7 +43,16 @@ class Proyecto:
         return self._presupuesto 
 
 
-    # === Métodos setter ===
+    # === Métodos setter ===#
+    """ Lo que hace: Coloca los atributos de las clases.
+        Parámetros:
+        - id_proyecto: ID del proyecto.
+        - nombre: Nombre del proyecto.
+        - descripcion: Descripción del proyecto.
+        - fecha_inicio: Fecha de inicio del proyecto.
+        - fecha_fin: Fecha de fin del proyecto.
+        - presupuesto: Presupuesto del proyecto.
+    """
     
     def colocar_id_proyecto(self, id_proyecto: int) -> None:
         self._id_proyecto = id_proyecto

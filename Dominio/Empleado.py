@@ -28,7 +28,7 @@ class Empleado:
         self._salario = salario
         self._departamento = departamento
 
-#=== Getters ===#
+#=== Métodos getters ===#
     """ Lo que hace: Obtiene los atributos de las clases. 
         Retorna: Los atributos de la clase.
     """
@@ -63,7 +63,7 @@ class Empleado:
     def obtener_departamento(self) -> Departamento:
         return self._departamento
     
-#=== Setters ===#
+#=== Métodos setters ===#
     """ Lo que hace: Coloca los atributos de las clases.
         Parámetros:
         - id_empleado: ID del empleado.

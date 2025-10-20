@@ -7,7 +7,7 @@ class ReglasProyecto:
     def __init__(self):
         self.dao = ProyectoDao()
 
-    def crear_proyecto(self, id_proy: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_termino: date, presupuesto: float):
+    def crear_proyecto(self, id_proyecto: int, nombre: str, descripcion: str, fecha_inicio: date, fecha_fin: date, presupuesto: float):
         """ Lo que hace: Crea un nuevo proyecto después de validar los datos.
             Parámetros:
             - id_proy: ID del proyecto.
@@ -19,25 +19,24 @@ class ReglasProyecto:
             Retorna: Mensaje de éxito o error.
             """
         try:
-            proy = Proyecto(id_proyecto=id_proy, nombre=nombre, descripcion=descripcion, fecha_inicio=fecha_inicio, fecha_termino=fecha_termino, presupuesto=presupuesto)
-            validar_proyecto(proy)
-            self.dao.agregar_proyecto(proy)
+            proyecto = Proyecto(id_proyecto=id_proyecto, nombre=nombre, descripcion=descripcion, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin, presupuesto=presupuesto)
+            validar_proyecto(proyecto)
+            self.dao.agregar_proyecto(proyecto)
             return f"Proyecto '{nombre}' agregado exitosamente."
-        
         except ValueError as e:
             return f"Error de validación: {e}"
         except Exception as e:
             return f"Error al crear proyecto: {e}"
 
-    def buscar_por_codigo(self, id_proy: int):
+    def buscar_por_codigo(self, id_proyecto: int):
         """ Lo que hace: Busca un proyecto por su ID después de validar el ID.
             Parámetros:
             - id_proy: ID del proyecto a buscar.
             Retorna: El proyecto encontrado o un mensaje de error.
             """
         try:
-            validar_id(id_proy)
-            return self.dao.obtener_proyecto_por_id(id_proy)
+            validar_id(id_proyecto)
+            return self.dao.obtener_proyecto_por_id(id_proyecto)
         except ValueError as e:
             return f"Error de validación: {e}"
 
