@@ -4,8 +4,10 @@ class Departamento:
         self._nombre = nombre
         self._gerente = gerente 
 
-    #Getters
-
+#=== Getters===#
+    """ Lo que hace: Obtiene los atributos de las clases. 
+        Retorna: Los atributos de la clase.
+    """
     def obtener_id_departamento(self) -> str:
         return self._id_departamento
     
@@ -16,8 +18,13 @@ class Departamento:
         return self._gerente
     
     
-    #Setters
-      
+#=== Setters ===#
+    """ Lo que hace: Coloca los atributos de las clases.
+        Parámetros:
+        - id_departamento: ID del departamento.
+        - nombre: Nombre del departamento.
+        - gerente: Gerente del departamento.
+    """
     def colocar_id_departamento(self, id_departamento: int) -> None:
         self._id_departamento= id_departamento
     

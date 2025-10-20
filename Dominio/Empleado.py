@@ -2,6 +2,20 @@ from datetime import date
 from Dominio.Departamento import Departamento 
 
 class Empleado:
+    """ Lo que hace: Representa un empleado con sus atributos y métodos.
+    Parámetros:
+    - id_empleado: ID del empleado.
+    - nombre: Nombre del empleado.
+    - correo: Correo electrónico del empleado.
+    - direccion: Dirección del empleado.
+    - contrasena: Contraseña del empleado.
+    - rol: Rol del empleado.
+    - fecha_contrato: Fecha de contrato del empleado.
+    - telefono: Teléfono del empleado.
+    - salario: Salario del empleado.
+    - departamento: Departamento al que pertenece el empleado.
+    Retorna: Una instancia de la clase Empleado.
+    """
     def __init__(self, id_empleado: int, nombre: str, correo: str, direccion: str, contrasena: str, rol: str, fecha_contrato: date, telefono: str, salario: int, departamento: Departamento) -> None:
         self._id_empleado = id
         self._nombre = nombre
@@ -14,7 +28,10 @@ class Empleado:
         self._salario = salario
         self._departamento = departamento
 
-    #Getters
+#=== Getters ===#
+    """ Lo que hace: Obtiene los atributos de las clases. 
+        Retorna: Los atributos de la clase.
+    """
 
     def obtener_id_empleado(self) -> str:
         return self._id_empleado
@@ -46,7 +63,20 @@ class Empleado:
     def obtener_departamento(self) -> Departamento:
         return self._departamento
     
-    #Setters
+#=== Setters ===#
+    """ Lo que hace: Coloca los atributos de las clases.
+        Parámetros:
+        - id_empleado: ID del empleado.
+        - nombre: Nombre del empleado.
+        - correo: Correo del empleado.
+        - direccion: Dirección del empleado.
+        - contrasena: Contraseña del empleado.
+        - rol: Rol del empleado.
+        - fecha_contrato: Fecha de contrato del empleado.
+        - telefono: Teléfono del empleado.
+        - salario: Salario del empleado.
+        - departamento: Departamento al que pertenece el empleado.
+    """
       
     def colocar_id_empleado(self, id_empleado: int) -> None:
         self._id_empleado = id_empleado

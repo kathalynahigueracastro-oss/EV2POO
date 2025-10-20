@@ -1,11 +1,18 @@
+from colorama import init, Fore, Back, Style
+from Dominio.Empleado import Empleado
+from Dominio.Departamento import Departamento
+from Dominio.Proyecto import Proyecto
+
 def menu_principal():
+    
+    print(Back.WHITE + Fore.MAGENTA)
     print("\n === Menú Principal === \n 1) Empleado \n 2) Departamentos \n 3) Proyectos \n 0) Salir")
-    opcion = input("Seleccione una opción: ")
+    opcion = int(input("Seleccione una opción: "))
 
 #--------Menú Empleados--------#
     if opcion == 1: 
-        print("\n === Menú Empleados === \n 1) Agregar Empleado \n 2) Eliminar Empleado \n 3) Actualizar Empleado \n 4) Consultar Todos los Empleados \n 5) Buscar Empleado por ID  \n 0) Volver Atrás")
-        opcion2 = input("Seleccione una opción: ")
+        print("\n === Menú Empleados === \n 1) Agregar Empleado \n 2) Eliminar Empleado \n 3) Actualizar Empleado \n 4) Consultar Todos los Empleados \n 5) Buscar Empleado por ID \n 6)Buscar Empleado por Nombre \n 0) Volver Atrás")
+        opcion2 = int(input("Seleccione una opción: "))
         if opcion2 == 1:
             pass
         elif opcion2 == 2: 
@@ -14,7 +21,9 @@ def menu_principal():
             pass
         elif opcion2 == 4: 
             pass
-        elif opcion2 == 5: 
+        elif opcion2 == 5:
+            pass
+        elif opcion2 == 6:
             pass
         elif opcion2 == 0:
             menu_principal()
@@ -24,8 +33,8 @@ def menu_principal():
             
 #--------Menú Departamentos--------#
     elif opcion == 2: 
-        print("\n === Menú Departamentos === \n 1) Agregar Departamento \n 2) Eliminar Departamento \n 3) Actualizar Departamento \n 4) Consultar Todos Los Departamentos \n 5) Buscar Deparamento por ID \n 0) Volver Atrás")
-        opcion2 = input("Seleccione una opción: ")
+        print("\n === Menú Departamentos === \n 1) Agregar Departamento \n 2) Eliminar Departamento \n 3) Actualizar Departamento \n 4) Consultar Todos Los Departamentos \n 5) Buscar Deparamento por ID \n 6)Buscar Departamento por Nombre \n 0) Volver Atrás")
+        opcion2 = int(input("Seleccione una opción: "))
         if opcion2 == 1: 
             pass
         elif opcion2 == 2: 
@@ -35,6 +44,8 @@ def menu_principal():
         elif opcion2 == 4: 
             pass
         elif opcion2 == 5: 
+            pass
+        elif opcion2 == 6:
             pass
         elif opcion2 == 0: 
             menu_principal()
@@ -44,8 +55,8 @@ def menu_principal():
 
 #--------Menú Proyectos--------#
     elif opcion == 3: 
-        print("\n === Menú Proyectos === \n 1) Agregar Proyecto \n 2) Eliminar Proyecto \n 3) Actualizar Proyecto \n 4) Consultar todos los Proyectos \n 5) Buscar Proyecto por ID \n 0) Volver Atrás")
-        opcion2 = input("Seleccione una opción: ")
+        print("\n === Menú Proyectos === \n 1) Agregar Proyecto \n 2) Eliminar Proyecto \n 3) Actualizar Proyecto \n 4) Consultar todos los Proyectos \n 5) Buscar Proyecto por ID \n 6)Buscar Proyecto por Nombre \n 0) Volver Atrás")
+        opcion2 = int(input("Seleccione una opción: "))
         if opcion2 == 1: 
             pass
         elif opcion2 == 2: 
@@ -55,6 +66,8 @@ def menu_principal():
         elif opcion2 == 4: 
             pass
         elif opcion2 == 5: 
+            pass
+        elif opcion2 == 6:
             pass
         elif opcion2 == 0: 
             menu_principal()
@@ -70,3 +83,5 @@ def menu_principal():
         print("Opción inválida, intente nuevamente.")
         menu_principal()
     return opcion
+
+menu_principal()

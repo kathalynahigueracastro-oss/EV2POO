@@ -7,14 +7,19 @@ class ReglasEmpleado:
         self.dao = EmpleadoDao()
 
     def crear_empleado(self, id_emp: int, nombre: str, correo: str, direccion: str, contrasena: str, rol: str):
+        """ Lo que hace: Crea un nuevo empleado después de validar los datos.
+            Parámetros:
+            - id_emp: ID del empleado.
+            - nombre: Nombre del empleado.
+            - correo: Correo del empleado.
+            - direccion: Dirección del empleado.
+            - contrasena: Contraseña del empleado.
+            - rol: Rol del empleado.
+            Retorna: Mensaje de éxito o error.
+            """
         try:
-            # Creamos el objeto primero
             emp = Empleado(id_empleado=id_emp, nombre=nombre, correo=correo, direccion=direccion, contrasena=contrasena, rol=rol)
-            
-            # Validamos el objeto
-            validar_empleado(emp) # Esto lanzará ValueError si algo falla
-            
-            # Si es válido, lo agregamos a la BD
+            validar_empleado(emp) 
             self.dao.agregar_empleado(emp)
             return f"Empleado '{nombre}' agregado exitosamente."
         
@@ -24,11 +29,15 @@ class ReglasEmpleado:
             return f"Error al crear empleado: {e}"
 
     def modificar_empleado(self, indice: int, id_emp: int, nuevo_valor: str):
+        """ Lo que hace: Modifica un empleado existente después de validar los datos.
+            Parámetros:
+            - indice: Índice del campo a modificar (1 para nombre, 2 para correo, 3 para dirección, 4 para contraseña, 5 para rol).
+            - id_emp: ID del empleado a modificar.
+            - nuevo_valor: Nuevo valor para el campo.
+            Retorna: Mensaje de éxito o error.
+            """
         try:
-            # Validar ID
             validar_id(id_emp)
-            
-            # Validar valor nuevo según el índice
             if indice == 1:
                 validar_nombre(nuevo_valor)
             elif indice == 2:
